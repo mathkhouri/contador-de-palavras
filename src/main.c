@@ -5,18 +5,42 @@
  * numero de palavras separadas que recebeu e, apos, encerrar.
  */
 
-#include <stdio.h>
+#include<stdio.h>
 
-int main() {
+int main(){
 
-  char c;
+    int palavras = 0, i = 0, j;
+    char frase[500], letra = 'a';
 
-  c = 1;
+    scanf("%[^\n]s", frase);
 
-  while (c != '\n') {
-    scanf("%c", &c);
-  }
+    while(letra != '\0'){
+        letra = frase[i];
 
-  printf("1\n");
-  return 0;
+        if((65 <= letra && letra <= 90) || (97 <= letra && letra <= 122)){
+            while((65 <= letra && letra <= 90) || (97 <= letra && letra <= 122)){
+                i++;
+                letra = frase[i];
+            }
+            palavras++;
+        }
+        if(48 <= letra && letra <= 57){
+            while(48 <= letra && letra <= 57){
+                i++;
+                letra = frase[i];
+            }
+            i++;
+            letra = frase[i];
+            while(48 <= letra && letra <= 57){
+                i++;
+                letra = frase[i];
+            }
+            palavras++;
+        }
+        i++;
+    }
+
+    printf("%d", palavras);
+
+    return 0;
 }
